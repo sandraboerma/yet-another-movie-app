@@ -13,8 +13,8 @@ function buildMoviesEndpoint(query = "", page = 1) {
     const p = Math.max(1, Number(page) || 1);
 
     return q
-        ? `/search/movie?query=${encodeURIComponent(q)}&page=${p}`
-        : `/discover/movie?sort_by=popularity.desc&page=${p}`;
+        ? `/search/movie?query=${encodeURIComponent(q)}&page=${p}&include_adult=false`
+        : `/discover/movie?sort_by=popularity.desc&page=${p}&include_adult=false`;
 }
 
 async function tmdbFetch(path) {

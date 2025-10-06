@@ -39,7 +39,8 @@ function useMovieSearch() {
                 }
 
                 if (!cancelled) {
-                    setMovieList(data.results);
+                    const cleanData = (data.results || []).filter((m) => !m?.adult);
+                    setMovieList(cleanData);
                     const apiTotal = Number(data.total_pages) || 1;
                     setTotalPages(Math.min(500, Math.max(1, apiTotal)));
                 }
